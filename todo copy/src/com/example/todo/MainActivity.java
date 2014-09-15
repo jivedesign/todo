@@ -96,18 +96,21 @@ public class MainActivity extends ActionBarActivity {
 
 		newTodoListView.setOnItemClickListener(new OnItemClickListener() {
 
+			
+			
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+					final int position, long id) {
 				// TODO Auto-generated method stub
-				Log.d("onclick", "********* ON CLICK ");
-
+				
+				
 				Log.d("onclick", "todo status from list bEFORE: "
 						+ TaskSingleton.GetTodoObject().get(position)
 								.getStatus());
 
 				if (TaskSingleton.GetTodoObject().get(position).getStatus() == false) {
 					TaskSingleton.GetTodoObject().get(position).setStatus(true);
+					
 
 				} else {
 					TaskSingleton.GetTodoObject().get(position)
@@ -117,12 +120,16 @@ public class MainActivity extends ActionBarActivity {
 				Log.d("onclick", "todo status from list AFTER: "
 						+ TaskSingleton.GetTodoObject().get(position)
 								.getStatus());
+				
+				setup_adapter();
 
 				displayCount();
 
 			}
 		});
-
+		
+		
+	
 		
 	}
 
