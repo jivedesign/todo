@@ -156,8 +156,10 @@ public class MainActivity extends ActionBarActivity {
 			return true;
 		} else if (id == R.id.action_share) {
 			Intent i = new Intent(this, ShareActivity.class);
+			startActivity(i);
 			return true;
 		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -276,8 +278,8 @@ public class MainActivity extends ActionBarActivity {
 
 		setup_adapter();
 		
-		Intent i = new Intent(this, ArchiveActivity.class);
-		startActivity(i);
+//		Intent i = new Intent(this, ArchiveActivity.class);
+//		startActivity(i);
 		
 	}
 

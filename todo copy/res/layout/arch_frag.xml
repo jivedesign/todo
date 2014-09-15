@@ -2,36 +2,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eee"
+    android:background="#ddd"
     android:orientation="vertical"
     >
 
     
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="#444"
         android:orientation="horizontal"
-        android:weightSum="1.0" >
+         >
 
         
         <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:background="#444"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:weightSum="0.3"
+        android:layout_weight="1" 
          >
         
         <TextView
             android:id="@+id/arch_total_count_label"
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Total"
+            android:gravity="center|right"
+            android:layout_marginRight="5dp"
+            android:text="Total: "
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#aaa"
+            android:layout_weight="0.1" 
              />    
             
         <TextView
@@ -39,9 +41,10 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:hint="0"
-            android:gravity="center"
+            android:gravity="center|left"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#fff"
+            android:layout_weight="0.1"
             />
         
         
@@ -51,21 +54,23 @@
         
         
         <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:background="#444"
-        android:weightSum="0.3"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:layout_weight="1" >
         
         <TextView
             android:id="@+id/arch_checked_count_label"
-            android:layout_width="match_parent"
+            android:layout_width="60dp"
             android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Checked"
+            android:layout_marginRight="5dp"
+            android:gravity="center|right"
+            android:text="Done: "
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#aaa" 
+            android:textColor="#aaa"
+            android:layout_weight="0.1"
             />    
             
         <TextView
@@ -73,9 +78,10 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:hint="0"
-            android:gravity="center"
+            android:gravity="center|left"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#fff"
+            android:layout_weight="0.1"
             />
         
         
@@ -86,21 +92,23 @@
         
         
         <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:background="#444"
-        android:weightSum="0.3"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_weight="1"  >
         
         <TextView
             android:id="@+id/arch_unchecked_count_label"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Unchecked"
+            android:layout_marginRight="5dp"
+            android:gravity="center|right"
+            android:text="Todo: "
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#aaa" 
+            android:layout_weight="0.1"
             />    
             
         <TextView
@@ -108,7 +116,8 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:hint="0"
-            android:gravity="center"
+            android:layout_weight="0.1"
+            android:gravity="center|left"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#fff" />
         

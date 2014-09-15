@@ -16,8 +16,13 @@
         android:text="What would you like to share?"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ddd" />
-
-    <CheckBox
+   
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal" >
+       
+        <CheckBox
         android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,6 +51,10 @@
         android:layout_toLeftOf="@+id/tvFragFirst"
         android:text="Everything"
         android:textColor="#fff" />
+    
+       </LinearLayout>
+
+   
 
     <Button
         android:id="@+id/button1"
@@ -59,7 +68,8 @@
         android:id="@+id/listView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true" >
+        android:layout_alignParentLeft="true"
+        android:background="#ddd" >
 
     </ListView>
 
