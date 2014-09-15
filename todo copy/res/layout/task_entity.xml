@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
-     android:clickable="true"
-    android:onClick="onClick"
--->
+
 <!-- android:background="@drawable/selectedbackground" -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/todo_entity_body"

@@ -12,7 +12,9 @@
         android:layout_width="fill_parent"
         android:layout_height="60dp"
         android:clickable="false"
-        android:longClickable="true"
+        android:longClickable="false"
+        android:focusable="false"
+        android:onClick="MainActivity.displayCount"
          />
 
     <TextView
@@ -22,6 +24,9 @@
         android:layout_marginTop="17dp"
         android:gravity="center"
         android:hint="Item Task"
+        android:longClickable="false"
+        android:clickable="false"
+        android:focusable="false"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#777"
       />

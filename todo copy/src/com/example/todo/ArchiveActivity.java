@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import controller.Task;
@@ -28,6 +30,9 @@ public class ArchiveActivity extends Activity {
 	private ListView archiveListView;
 	private archive_ListAdapter ala;
 	
+	private int total = 0;
+	private int checked = 0;
+	private int unchecked = 0;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -66,6 +71,41 @@ public class ArchiveActivity extends Activity {
 						return true;
 					}
 				});
+		
+		archListView
+			.setOnItemClickListener(new OnItemClickListener() {
+
+			
+			
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					final int position, long id) {
+				// TODO Auto-generated method stub
+				
+				
+				Log.d("onclick", "todo status from list bEFORE: "
+						+ TaskSingleton.GetArchObject().get(position)
+								.getStatus());
+
+				if (TaskSingleton.GetArchObject().get(position).getStatus() == false) {
+					TaskSingleton.GetArchObject().get(position).setStatus(true);
+					
+
+				} else {
+					TaskSingleton.GetArchObject().get(position)
+							.setStatus(false);
+				}
+
+				Log.d("onclick", "todo status from list AFTER: "
+						+ TaskSingleton.GetArchObject().get(position)
+								.getStatus());
+				
+				setup_adapter();
+
+				displayCount();
+
+			}
+		});
 	}
 	
 	
@@ -165,5 +205,49 @@ public class ArchiveActivity extends Activity {
 	}
 
 
+	
+	public void counts() {
+
+		checked = 0;
+		unchecked = 0;
+
+		if (!TaskSingleton.GetArchObject().isEmpty()) {
+
+			for (int i = 0; i < TaskSingleton.GetArchObject().size(); i++) {
+
+				if (TaskSingleton.GetArchObject().get(i).getStatus() == false) {
+					Log.d("onclick", "unchecked "
+							+ TaskSingleton.GetArchObject().get(i).getStatus());
+					unchecked += 1;
+				} else {
+					Log.d("onclick", "checked "
+							+ TaskSingleton.GetArchObject().get(i).getStatus());
+					checked += 1;
+				}
+
+			}
+		}
+
+		Log.d("onclick", "********* Total COunts " + total + "Actual total"
+				+ TaskSingleton.GetArchObject().size());
+		Log.d("onclick", "********* checked " + checked);
+		Log.d("onclick", "********* unchecked " + unchecked);
+
+	}
+
+	public void displayCount() {
+
+		counts();
+
+		TextView totalCount = (TextView) findViewById(R.id.arch_total_count);
+		TextView checkedCount = (TextView) findViewById(R.id.arch_checked_count);
+		TextView uncheckedCount = (TextView) findViewById(R.id.arch_unchecked_count);
+
+		totalCount.setText(Integer.toString(TaskSingleton.GetTodoObject()
+				.size()));
+		checkedCount.setText(Integer.toString(checked));
+		uncheckedCount.setText(Integer.toString(unchecked));
+
+	}
 
 }

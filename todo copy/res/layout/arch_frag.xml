@@ -31,16 +31,17 @@
             android:gravity="center"
             android:text="Total"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ddd"
+            android:textColor="#aaa"
              />    
             
         <TextView
             android:id="@+id/arch_total_count"
             android:layout_width="30dp"
             android:layout_height="50dp"
-            android:hint="50"
+            android:hint="0"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff"
             />
         
         
@@ -64,15 +65,17 @@
             android:gravity="center"
             android:text="Checked"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ddd" />    
+            android:textColor="#aaa" 
+            />    
             
         <TextView
             android:id="@+id/arch_checked_count"
             android:layout_width="30dp"
             android:layout_height="50dp"
-            android:hint="50"
+            android:hint="0"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#fff"
             />
         
         
@@ -97,13 +100,14 @@
             android:gravity="center"
             android:text="Unchecked"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ddd" />    
+            android:textColor="#aaa" 
+            />    
             
         <TextView
             android:id="@+id/arch_unchecked_count"
             android:layout_width="30dp"
             android:layout_height="50dp"
-            android:hint="50"
+            android:hint="0"
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#fff" />
