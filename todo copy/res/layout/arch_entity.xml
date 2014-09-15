@@ -1,0 +1,29 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+ 	android:clickable="false"
+    android:longClickable="true"
+    android:textColor="#999"
+    tools:context="com.example.todo.MainActivity" >
+
+    <CheckBox
+        android:id="@+id/arch_checkBox"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:clickable="false"
+        android:longClickable="true"
+         />
+
+    <TextView
+        android:id="@+id/arch_name"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="17dp"
+        android:gravity="center"
+        android:hint="Item Task"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#777"
+      />
+
+</RelativeLayout>
