@@ -270,8 +270,6 @@ public class MainActivity extends ActionBarActivity {
 				(Task) TaskSingleton.GetTodoObject().get(pos));
 		TaskSingleton.GetTodoObject().remove(pos);
 
-		setup_adapter();
-
 		Log.d("onclick", "********* TO ARCHIVE ");
 
 		displayCount();

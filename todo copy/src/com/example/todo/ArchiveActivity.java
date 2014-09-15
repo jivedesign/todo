@@ -42,6 +42,7 @@ public class ArchiveActivity extends Activity {
 	    // TODO Auto-generated method stub
 	    
 		archiveListView = (ListView) findViewById(R.id.archive_ListView);
+		displayCount();
 		setup_adapter();
 	}
 	
@@ -191,13 +192,15 @@ public class ArchiveActivity extends Activity {
 
 	public void toTodo(int pos) {
 
-		TaskSingleton.GetArchObject().add(
+		TaskSingleton.GetTodoObject().add(
 				(Task) TaskSingleton.GetArchObject().get(pos));
 		TaskSingleton.GetArchObject().remove(pos);
 
-		setup_adapter();
+		Log.d("onclick", "********* TO TODO ");
 
-		Log.d("onclick", "********* TO ARCHIVE ");
+		displayCount();
+
+		setup_adapter();
 
 		Intent i = new Intent(this, MainActivity.class);
 		startActivity(i);
@@ -243,7 +246,7 @@ public class ArchiveActivity extends Activity {
 		TextView checkedCount = (TextView) findViewById(R.id.arch_checked_count);
 		TextView uncheckedCount = (TextView) findViewById(R.id.arch_unchecked_count);
 
-		totalCount.setText(Integer.toString(TaskSingleton.GetTodoObject()
+		totalCount.setText(Integer.toString(TaskSingleton.GetArchObject()
 				.size()));
 		checkedCount.setText(Integer.toString(checked));
 		uncheckedCount.setText(Integer.toString(unchecked));
