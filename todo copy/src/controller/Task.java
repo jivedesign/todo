@@ -1,12 +1,5 @@
 package controller;
 
-import android.content.res.XmlResourceParser;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
-
-import com.example.todo.R;
-
 import java.io.Serializable;
 
 public class Task implements Serializable {

@@ -2,10 +2,6 @@ package controller;
 
 import java.util.ArrayList;
 
-import com.example.todo.R;
-
-import controller.task_ListAdapter.TaskListHolder;
-
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
@@ -14,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+
+import com.example.todo.R;
 
 
 public class archive_ListAdapter extends task_ListAdapter {

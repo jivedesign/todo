@@ -1,24 +1,25 @@
-package com.example.todo;
+package com.jivedesign.todo;
+
+import com.example.todo.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 import controller.Task;
 import controller.archive_ListAdapter;
-import controller.task_ListAdapter;
-import android.content.Intent;
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class ArchiveActivity extends Activity {
 

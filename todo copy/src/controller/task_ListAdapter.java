@@ -3,22 +3,16 @@ package controller;
 import java.util.ArrayList;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemLongClickListener;
 
-import com.example.todo.MainActivity;
 import com.example.todo.R;
-import com.example.todo.TaskSingleton;
 
 public class task_ListAdapter extends ArrayAdapter<Task> {
 

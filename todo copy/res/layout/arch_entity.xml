@@ -4,8 +4,8 @@
     android:layout_height="fill_parent"
  	android:clickable="false"
     android:longClickable="true"
-    android:textColor="#999"
-    tools:context="com.example.todo.MainActivity" >
+    android:textColor="#555"
+    tools:context="com.jivedesign.todo.MainActivity" >
 
     <CheckBox
         android:id="@+id/arch_checkBox"
@@ -28,7 +28,7 @@
         android:clickable="false"
         android:focusable="false"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#777"
+        android:textColor="#555"
       />
 
 </RelativeLayout>

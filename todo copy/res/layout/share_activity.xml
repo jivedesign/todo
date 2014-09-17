@@ -2,75 +2,145 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000" >
-    
-   
-    
+    android:background="#333" >
 
-   <TextView
+    
+     <TextView
+        android:id="@+id/textView0"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="To whom would you like to email?"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#eee"
+        android:textStyle="bold" />
+    
+    
+     
+    
+    <EditText
+         android:id="@+id/email_address"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#eee"
+        android:hint="Email of recipient REQUIRED"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        />
+    
+    
+    <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
         android:text="What would you like to share?"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ddd" />
-   
-   <LinearLayout
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:orientation="horizontal" >
-       
-        <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
+        android:textColor="#ddd"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/checkBox3"
-        android:layout_alignBottom="@+id/checkBox3"
-        android:layout_toRightOf="@+id/checkBox1"
-        android:text="All Todos"
-        android:textColor="#fff" />
+        android:layout_marginTop="140dp"
+        android:gravity="center"
+        android:orientation="vertical" 
+        android:background="#222">
 
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/shareRadioMenu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:textColor="#ddd" >
+
+            <RadioButton
+                android:id="@+id/share_Everything"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:text="All of the tasks"
+                android:textColor="#ddd" />
+
+            <RadioButton
+                android:id="@+id/share_All_Todos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="All Todos"
+                android:textColor="#ddd" />
+
+            <RadioButton
+                android:id="@+id/share_All_Archives"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="All Archives"
+                android:textColor="#ddd" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="#ddd"
+            android:layout_marginBottom="20dp"
+            android:text="Email" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/checkBox1"
-        android:layout_alignBottom="@+id/checkBox1"
-        android:layout_alignParentRight="true"
-        android:text="Some ToDos"
-        android:textColor="#fff" />
+        android:layout_marginTop="370dp"
+        android:gravity="center"
+        android:orientation="vertical" >
 
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="22dp"
-        android:layout_toLeftOf="@+id/tvFragFirst"
-        android:text="Everything"
-        android:textColor="#fff" />
-    
-       </LinearLayout>
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="Or share a selection of:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ddd"
+            android:textStyle="bold" />
 
-   
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Button" />
+            <Button
+                android:id="@+id/toShareTodo"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="#ddd"
+                android:onClick="toSendTodos"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Todos" />
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:background="#ddd" >
-
-    </ListView>
+            <Button
+                android:id="@+id/toShareArchive"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="10dp"
+                android:background="#ddd"
+                android:onClick="toSendArchives"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Archives" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

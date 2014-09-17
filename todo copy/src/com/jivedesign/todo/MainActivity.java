@@ -1,4 +1,6 @@
-package com.example.todo;
+package com.jivedesign.todo;
+
+import com.example.todo.R;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -16,10 +18,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import controller.Task;
 import controller.task_ListAdapter;
@@ -128,7 +128,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 		
-		
+		Utils.readObject();
 	
 		
 	}
@@ -172,8 +172,7 @@ public class MainActivity extends ActionBarActivity {
 		// Get XML file to view
 		View promptsView = li.inflate(R.layout.add_todo_dialog, null);
 
-		final EditText taskName = (EditText) promptsView
-				.findViewById(R.id.add_todo_dialog);
+		final EditText taskName = (EditText) promptsView.findViewById(R.id.add_todo_dialog);
 
 		// Create a new AlertDialog
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
