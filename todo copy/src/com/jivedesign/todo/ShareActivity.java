@@ -1,6 +1,10 @@
 package com.jivedesign.todo;
 
+import java.util.ArrayList;
+
 import com.example.todo.R;
+
+import controller.Task;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,6 +17,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 public class ShareActivity extends Activity {
 
@@ -23,23 +29,54 @@ public class ShareActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.share_activity);
-		
-		//Emailer.emailTasks(email_address, TaskSingleton.GetTodoObject());
+
+		// Emailer.emailTasks(email_address, TaskSingleton.GetTodoObject());
 
 		Intent intent = new Intent(Intent.ACTION_SEND);
-		
+
 		intent.setData(Uri.parse("mailto:"));
 		intent.setType("plain/text");
-		
-		intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"jhn@ualberta.ca"});
-		intent.putExtra(Intent.EXTRA_SUBJECT, "Test email");
-		intent.putExtra(Intent.EXTRA_TEXT   , "body of email");
-		
-		startActivity(Intent.createChooser(intent, "Send Mail Using :"));
-		
-		
+
+		// Emailer.emailTasks(this, "Todo", email_address,
+		// TaskSingleton.GetTodoObject());
+
 	}
 
+	public void emailAll(View v) {
+
+		RadioGroup radioButtonGroup = (RadioGroup) findViewById(R.id.shareRadioMenu);
+
+		int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
+		View radioButton = radioButtonGroup.findViewById(radioButtonID);
+		int idx = radioButtonGroup.indexOfChild(radioButton);
+
+		switch (idx) {
+		case 0:
+			ArrayList<Task> emailEverythingList = new ArrayList<Task>();
+			emailEverythingList.addAll(TaskSingleton.GetTodoObject());
+			emailEverythingList.addAll(TaskSingleton.GetArchObject());
+			
+			Emailer.emailTasks(this, "everything!", email_address, emailEverythingList);
+			break;
+		case 1:
+			 Emailer.emailTasks(this, "all Todos!", email_address,
+			 TaskSingleton.GetTodoObject());
+			 break;
+		case 2:
+			 Emailer.emailTasks(this, "all Archive!", email_address,
+			 TaskSingleton.GetArchObject());
+			 break;
+		default:
+			break;
+			
+		}
+
+	}
+
+	
+	
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -76,17 +113,19 @@ public class ShareActivity extends Activity {
 
 		EditText emailString = (EditText) findViewById(R.id.email_address);
 		email_address = (String) emailString.getText().toString();
-		Log.d("onclick", "*EMAIL ADDRESS " + email_address);
+		Log.d("onclick", "*****EMAIL ADDRESS " + email_address);
 
 	}
 
 	public void toSendTodos(View v) {
 		Intent i = new Intent(this, ShareTodoActivity.class);
+		i.putExtra("email", email_address);
 		startActivity(i);
 	}
 
 	public void toSendArchives(View v) {
 		Intent i = new Intent(this, ShareArchiveActivity.class);
+		i.putExtra("email", email_address);
 		startActivity(i);
 	}
 

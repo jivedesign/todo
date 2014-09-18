@@ -9,10 +9,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 
 public class Emailer extends Activity {
 
-	static Context context;
 	//http://www.tutorialspoint.com/android/android_sending_email.htm
 	
 	//http://www.tutorialspoint.com/about/about_disclaimer.htm
@@ -24,26 +24,37 @@ public class Emailer extends Activity {
 	}
 
 	
-	public static void emailTasks(String email_address, ArrayList<Task> taskArray) {
-//		
-//		Intent intent = new Intent(Intent.ACTION_SEND);
-//		
-//		intent.setData(Uri.parse("mailto:"));
-//		intent.setType("plain/text");
-//		
-//		intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"jhn@ualberta.ca"});
-//		intent.putExtra(Intent.EXTRA_SUBJECT, "Test email");
-//		intent.putExtra(Intent.EXTRA_TEXT   , "body of email");
-//		
-//		startActivity(Intent.createChooser(intent, "Send Mail Using :"));
-//		
-//		
-//		Intent email = new Intent(Intent.ACTION_SEND);
-//		email.putExtra(Intent.EXTRA_EMAIL, new String[]{"abc@gmail.com"});        
-//		email.putExtra(Intent.EXTRA_SUBJECT, "Sunject Text Here..");
-//		email.putExtra(Intent.EXTRA_TEXT, "");
-//		email.setType("message/rfc822");
-//		startActivity(Intent.createChooser(email, "Send Mail Using :"));
+	public static void emailTasks(Context context, String list_type, String email_address, ArrayList<Task> taskArray ) {
+		
+		//http://www.tutorialspoint.com/android/android_sending_email.htm
+		
+		String email_body = "";
+		
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		
+		intent.setData(Uri.parse("mailto:"));
+		intent.setType("plain/text");
+		intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{ email_address });
+		intent.putExtra(Intent.EXTRA_SUBJECT, "A task list of " + list_type);
+		
+		Log.d("onclick", "*LIST SIZE " + taskArray.size());
+		
+		for (int i = 0; i < taskArray.size(); i++) {
+
+			
+			email_body += 
+					"Task name: " + taskArray.get(i).getTaskName() + "\t\t"
+					+ "Type: " + taskArray.get(i).getGroup() + "\t"
+					+ "Done?: " + taskArray.get(i).getStatus()	+ "\n"				
+					;
+			Log.d("onclick", "*EMAIL Body " + email_body);
+		}
+		
+		
+		
+		intent.putExtra(Intent.EXTRA_TEXT   , email_body);
+		
+		context.startActivity(Intent.createChooser(intent, "Sending email of tasks"));
 		
 	}
 	

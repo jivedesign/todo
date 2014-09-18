@@ -1,5 +1,7 @@
 package com.jivedesign.todo;
 
+import java.util.ArrayList;
+
 import com.example.todo.R;
 
 import android.app.Activity;
@@ -18,9 +20,11 @@ import controller.task_ListAdapter;
 
 public class ShareTodoActivity extends Activity {
 
+	String email_address ="";
 	
 	private ListView shareTodoListView;
 	private task_ListAdapter tla;
+	private ArrayList<Task> someTodosList = new ArrayList<Task>();
 	
 	Context context = this;
 	CharSequence text = "You have selected ";
@@ -38,6 +42,10 @@ public class ShareTodoActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.share_todos);
 	    
+	    
+	    Intent intent = getIntent();
+	    email_address = intent.getStringExtra("email");
+	    
 	    setup_adapter();
 	    
 	    
@@ -52,6 +60,8 @@ public class ShareTodoActivity extends Activity {
 		shareTodoListView = (ListView) findViewById(R.id.share_todoList);
 		shareTodoListView.setAdapter(tla);
 		
+		
+		
 		shareTodoListView
 			.setOnItemClickListener(new OnItemClickListener() {
 
@@ -62,16 +72,20 @@ public class ShareTodoActivity extends Activity {
 					
 					Task selectedTask = tla.getItem(position);
 					
-					
-					//http://developer.android.com/guide/topics/ui/notifiers/toasts.html
-
+					int duration = Toast.LENGTH_SHORT;
 					Toast toast = Toast.makeText(context, text + selectedTask.getTaskName(), duration);
 					toast.show();
-						
 					
+					someTodosList.add(selectedTask);
 					
 				}
 			});
+		
+	}
+	
+	
+	public void emailSomeTodos(View v) {
+		Emailer.emailTasks(this, "Some todos", email_address, someTodosList);
 		
 	}
 	

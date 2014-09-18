@@ -19,7 +19,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Email" 
-        android:background="#ddd"/>
+        android:background="#ddd"
+        android:onClick="emailSomeArchives"/>
     
     
 </RelativeLayout>

@@ -267,6 +267,8 @@ public class MainActivity extends ActionBarActivity {
 
 	public void toArchive(int pos) {
 
+		TaskSingleton.GetTodoObject().get(pos).setGroup("archive");
+		
 		TaskSingleton.GetArchObject().add(
 				(Task) TaskSingleton.GetTodoObject().get(pos));
 		TaskSingleton.GetTodoObject().remove(pos);
