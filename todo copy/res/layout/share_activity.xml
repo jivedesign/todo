@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:background="#333" >
 
-    
-     <TextView
+    <TextView
         android:id="@+id/textView0"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
@@ -14,41 +13,53 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#eee"
         android:textStyle="bold" />
-    
-    
-     
-    
-    <EditText
-         android:id="@+id/email_address"
+
+    <LinearLayout
+        android:id="@+id/email_adder_box"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:layout_marginTop="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#eee"
-        android:hint="Email of recipient REQUIRED"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        />
-    
-    
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="fill_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="80dp"
-        android:gravity="center"
-        android:text="What would you like to share?"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ddd"
-        android:textStyle="bold" />
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/email_address"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:hint="Email of recipient REQUIRED"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#eee" />
+
+        <Button
+            android:id="@+id/add_reciever"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:background="#ddd"
+            android:layout_alignRight="@id/email_adder_box"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="OK" 
+            android:onClick="getEmail"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="90dp"
+        android:background="#222"
         android:gravity="center"
-        android:orientation="vertical" 
-        android:background="#222">
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="What would you like to share?"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ddd"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/shareRadioMenu"
@@ -63,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="All of the tasks"
                 android:textColor="#ddd" />
 
@@ -85,11 +96,11 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/send_email1"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:background="#ddd"
             android:layout_marginBottom="20dp"
+            android:background="#ddd"
             android:text="Email" />
     </LinearLayout>
 
@@ -125,8 +136,8 @@
                 android:layout_marginBottom="10dp"
                 android:background="#ddd"
                 android:onClick="toSendTodos"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Todos" />
+                android:text="Todos"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
             <Button
                 android:id="@+id/toShareArchive"
@@ -138,8 +149,8 @@
                 android:layout_marginBottom="10dp"
                 android:background="#ddd"
                 android:onClick="toSendArchives"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Archives" />
+                android:text="Archives"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </LinearLayout>
     </LinearLayout>
 

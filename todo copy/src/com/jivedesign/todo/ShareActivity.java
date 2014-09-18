@@ -4,21 +4,39 @@ import com.example.todo.R;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class ShareActivity extends Activity {
+
+	private String email_address = "";
 
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.share_activity);
+		
+		//Emailer.emailTasks(email_address, TaskSingleton.GetTodoObject());
 
-//		getEmail();
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		
+		intent.setData(Uri.parse("mailto:"));
+		intent.setType("plain/text");
+		
+		intent.putExtra(Intent.EXTRA_EMAIL  , new String[]{"jhn@ualberta.ca"});
+		intent.putExtra(Intent.EXTRA_SUBJECT, "Test email");
+		intent.putExtra(Intent.EXTRA_TEXT   , "body of email");
+		
+		startActivity(Intent.createChooser(intent, "Send Mail Using :"));
+		
 		
 	}
 
@@ -51,33 +69,24 @@ public class ShareActivity extends Activity {
 
 		return super.onOptionsItemSelected(item);
 	}
-	
-	
-	
-	//Array radioAdapter = array.createFromResource(this, R.id.shareRadioMenu);
-	
 
-	public String getEmail() {
-		
-		String email_address = "";
-		
+	// Array radioAdapter = array.createFromResource(this, R.id.shareRadioMenu);
+
+	public void getEmail(View v) {
+
 		EditText emailString = (EditText) findViewById(R.id.email_address);
 		email_address = (String) emailString.getText().toString();
-		
-		return email_address;
+		Log.d("onclick", "*EMAIL ADDRESS " + email_address);
+
 	}
-	
-	
-	
-	
-	
+
 	public void toSendTodos(View v) {
-		Intent i = new Intent(this,ShareTodoActivity.class);
+		Intent i = new Intent(this, ShareTodoActivity.class);
 		startActivity(i);
 	}
-	
+
 	public void toSendArchives(View v) {
-		Intent i = new Intent(this,ShareArchiveActivity.class);
+		Intent i = new Intent(this, ShareArchiveActivity.class);
 		startActivity(i);
 	}
 
