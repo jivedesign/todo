@@ -40,7 +40,6 @@ public class Emailer extends Activity {
 		Log.d("onclick", "*LIST SIZE " + taskArray.size());
 		
 		for (int i = 0; i < taskArray.size(); i++) {
-
 			
 			email_body += 
 					"Task name: " + taskArray.get(i).getTaskName() + "\t\t"

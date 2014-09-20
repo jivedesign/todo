@@ -1,5 +1,7 @@
 package com.jivedesign.todo;
 
+import java.io.FileNotFoundException;
+
 import com.example.todo.R;
 
 import android.app.Activity;
@@ -23,35 +25,50 @@ import controller.archive_ListAdapter;
 
 public class ArchiveActivity extends Activity {
 
-//	public ArchiveActivity() {
-//		// TODO Auto-generated constructor stub
-//	}
+	// public ArchiveActivity() {
+	// // TODO Auto-generated constructor stub
+	// }
 
 	final Context context = this;
 	private ListView archiveListView;
 	private archive_ListAdapter ala;
-	
+	String todo_file = "todoFile.sav";
+	String arch_file = "archFile.sav";
+
 	private int total = 0;
 	private int checked = 0;
 	private int unchecked = 0;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.arch_frag);
-	    // TODO Auto-generated method stub
-	    
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.arch_frag);
+		// TODO Auto-generated method stub
+		
+		try {
+			fileSaverLoader.readObject(this, TaskSingleton.GetArchObject(), arch_file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		archiveListView = (ListView) findViewById(R.id.archive_ListView);
 		displayCount();
 		setup_adapter();
 	}
-	
 
 	public void setup_adapter() {
-		
-		//ala = new archive_ListAdapter(this, R.layout.arch_frag, TaskSingleton.GetArchObject());
-		ala = new archive_ListAdapter(this, R.layout.arch_entity,TaskSingleton.GetArchObject());
+
+		// Save the Singleton
+		fileSaverLoader.saveObject(this, TaskSingleton.GetArchObject(),
+				arch_file);
+		displayCount();
+
+		// ala = new archive_ListAdapter(this, R.layout.arch_frag,
+		// TaskSingleton.GetArchObject());
+		ala = new archive_ListAdapter(this, R.layout.arch_entity,
+				TaskSingleton.GetArchObject());
 
 		// Pump adapter into Listview
 
@@ -59,39 +76,31 @@ public class ArchiveActivity extends Activity {
 		Log.d("onclick", "********* THIS IS Archive SETUP ADAPTER: ");
 		archListView.setAdapter(ala);
 
-		
+		archListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+			public boolean onItemLongClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				{
+					Log.d("onclick", "********* THIS IS A ARCH LONG CLICK: ");
+					// Task task = todoList.get(position);
+					edit_arch(position);
+				}
+				return true;
+			}
+		});
 
-		archListView
-				.setOnItemLongClickListener(new OnItemLongClickListener() {
-					public boolean onItemLongClick(AdapterView<?> parent,
-							View view, int position, long id) {
-						{
-							Log.d("onclick", "********* THIS IS A ARCH LONG CLICK: ");
-							// Task task = todoList.get(position);
-							edit_arch(position);
-						}
-						return true;
-					}
-				});
-		
-		archListView
-			.setOnItemClickListener(new OnItemClickListener() {
+		archListView.setOnItemClickListener(new OnItemClickListener() {
 
-			
-			
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					final int position, long id) {
 				// TODO Auto-generated method stub
-				
-				
+
 				Log.d("onclick", "todo status from list bEFORE: "
 						+ TaskSingleton.GetArchObject().get(position)
 								.getStatus());
 
 				if (TaskSingleton.GetArchObject().get(position).getStatus() == false) {
 					TaskSingleton.GetArchObject().get(position).setStatus(true);
-					
 
 				} else {
 					TaskSingleton.GetArchObject().get(position)
@@ -101,7 +110,7 @@ public class ArchiveActivity extends Activity {
 				Log.d("onclick", "todo status from list AFTER: "
 						+ TaskSingleton.GetArchObject().get(position)
 								.getStatus());
-				
+
 				setup_adapter();
 
 				displayCount();
@@ -109,8 +118,7 @@ public class ArchiveActivity extends Activity {
 			}
 		});
 	}
-	
-	
+
 	public void edit_arch(final int position) {
 		// http://developer.android.com/reference/android/app/AlertDialog.Builder.html#setSingleChoiceItems(java.lang.CharSequence[],
 		// int, android.content.DialogInterface.OnClickListener)
@@ -142,25 +150,27 @@ public class ArchiveActivity extends Activity {
 							public void onClick(DialogInterface dialog, int id) {
 								Log.d("onclick", "********* UNARCHIVE ");
 								toTodo(position);
-								
+
 							}
 						});
 		AlertDialog alertDialog = editDialog.create();
 		alertDialog.show();
 
 	}
-	
-	
-	public void task2Archive(String task_name, boolean status) {
-		
-		Task task = new Task(Utils.getNewID(), "arch", status, task_name);
-		
-		TaskSingleton.GetArchObject().add(task);
-		setup_adapter();
-		
-	}
-	
-	
+
+//	public void task2Archive(String task_name, boolean status) {
+//
+//		Task task = new Task(Utils.getNewID(), "arch", status, task_name);
+//
+//		TaskSingleton.GetArchObject().add(task);
+//		fileSaverLoader.saveObject(this, TaskSingleton.GetArchObject(),
+//				arch_file);
+//		fileSaverLoader.saveObject(this, TaskSingleton.GetTodoObject(), todo_file);
+//		displayCount();
+//		setup_adapter();
+//
+//	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -187,10 +197,9 @@ public class ArchiveActivity extends Activity {
 			startActivity(i);
 			return true;
 		}
-			
+
 		return super.onOptionsItemSelected(item);
 	}
-	
 
 	public void toTodo(int pos) {
 
@@ -200,17 +209,17 @@ public class ArchiveActivity extends Activity {
 
 		Log.d("onclick", "********* TO TODO ");
 
+		fileSaverLoader.saveObject(this, TaskSingleton.GetArchObject(),
+				arch_file);
+		fileSaverLoader.saveObject(this, TaskSingleton.GetTodoObject(), todo_file);
 		displayCount();
-
 		setup_adapter();
 
-//		Intent i = new Intent(this, MainActivity.class);
-//		startActivity(i);
+		// Intent i = new Intent(this, MainActivity.class);
+		// startActivity(i);
 
 	}
 
-
-	
 	public void counts() {
 
 		checked = 0;

@@ -35,6 +35,8 @@ public class MainActivity extends ActionBarActivity {
 
 	private ListView todoListView;
 	private task_ListAdapter tla;
+	String todo_file = "todoFile.sav";
+	String arch_file = "archFile.sav";
 
 	private int total = 0;
 	private int checked = 0;
@@ -46,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_main);
 
 		try {
-			Utils.readObject(this);
+			fileSaverLoader.readObject(this, TaskSingleton.GetTodoObject(), todo_file);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,7 +79,7 @@ public class MainActivity extends ActionBarActivity {
 	public void setup_adapter() {
 
 		// Save the Singleton
-		Utils.saveObject(this);
+		fileSaverLoader.saveObject(this, TaskSingleton.GetTodoObject(), todo_file);
 		displayCount();
 
 		// Pump list adapter full of task_entities which contain items of
@@ -222,7 +224,7 @@ public class MainActivity extends ActionBarActivity {
 
 		alertDialog.show();
 
-		Utils.saveObject(this);
+		fileSaverLoader.saveObject(this, TaskSingleton.GetTodoObject(), todo_file);
 		setup_adapter();
 
 	}
@@ -283,7 +285,9 @@ public class MainActivity extends ActionBarActivity {
 
 		displayCount();
 
-		Utils.saveObject(context);
+		fileSaverLoader.saveObject(this, TaskSingleton.GetTodoObject(), todo_file);
+		fileSaverLoader.saveObject(this, TaskSingleton.GetArchObject(),
+				arch_file);
 		setup_adapter();
 
 		// Intent i = new Intent(this, ArchiveActivity.class);
