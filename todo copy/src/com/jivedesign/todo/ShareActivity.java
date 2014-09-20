@@ -30,16 +30,6 @@ public class ShareActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.share_activity);
 
-		// Emailer.emailTasks(email_address, TaskSingleton.GetTodoObject());
-
-		Intent intent = new Intent(Intent.ACTION_SEND);
-
-		intent.setData(Uri.parse("mailto:"));
-		intent.setType("plain/text");
-
-		// Emailer.emailTasks(this, "Todo", email_address,
-		// TaskSingleton.GetTodoObject());
-
 	}
 
 	public void emailAll(View v) {
@@ -59,12 +49,10 @@ public class ShareActivity extends Activity {
 			Emailer.emailTasks(this, "everything!", email_address, emailEverythingList);
 			break;
 		case 1:
-			 Emailer.emailTasks(this, "all Todos!", email_address,
-			 TaskSingleton.GetTodoObject());
+			 Emailer.emailTasks(this, "all Todos!", email_address, TaskSingleton.GetTodoObject());
 			 break;
 		case 2:
-			 Emailer.emailTasks(this, "all Archive!", email_address,
-			 TaskSingleton.GetArchObject());
+			 Emailer.emailTasks(this, "all Archive!", email_address, TaskSingleton.GetArchObject());
 			 break;
 		default:
 			break;

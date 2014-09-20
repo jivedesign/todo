@@ -46,7 +46,7 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
 		try {
 			fileSaverLoader.readObject(this, TaskSingleton.GetTodoObject(), todo_file);
 		} catch (FileNotFoundException e) {
@@ -54,12 +54,24 @@ public class MainActivity extends ActionBarActivity {
 			e.printStackTrace();
 		}
 
-		todoListView = (ListView) findViewById(R.id.todo_listView);
+		startup();
+	}
 
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		setup_adapter();
+		
+	}
+	
+	
+	public void startup() {
+		todoListView = (ListView) findViewById(R.id.todo_listView);
 		final Button add_todoButton = (Button) findViewById(R.id.add_Button);
 
 		add_todoButton.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -68,14 +80,23 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 
-		Log.d("onclick", "********* SIZE OF SINGLETON: "
-				+ TaskSingleton.GetTodoObject().size());
-
+		Log.d("onclick", "********* SIZE OF SINGLETON: "+ TaskSingleton.GetTodoObject().size());
 
 		setup_adapter();
-
+		
 	}
-
+	
+//	
+//	@Override
+//	public void onRestart() {
+//		super.onRestart(); // Always call the superclass method first
+//		
+//		setup_adapter();
+//
+//	}
+//	
+	
+	
 	public void setup_adapter() {
 
 		// Save the Singleton
@@ -121,8 +142,8 @@ public class MainActivity extends ActionBarActivity {
 	protected void taskChangeStatus(int position) {
 		// TODO Auto-generated method stub
 
-		Log.d("onclick", "todo status from list bEFORE: "
-				+ TaskSingleton.GetTodoObject().get(position).getStatus());
+//		Log.d("onclick", "todo status from list bEFORE: "
+//				+ TaskSingleton.GetTodoObject().get(position).getStatus());
 
 		if (TaskSingleton.GetTodoObject().get(position).getStatus() == false) {
 			TaskSingleton.GetTodoObject().get(position).setStatus(true);
@@ -131,43 +152,15 @@ public class MainActivity extends ActionBarActivity {
 			TaskSingleton.GetTodoObject().get(position).setStatus(false);
 		}
 
-		Log.d("onclick", "todo status from list AFTER: "
-				+ TaskSingleton.GetTodoObject().get(position).getStatus());
+//		Log.d("onclick", "todo status from list AFTER: "
+//				+ TaskSingleton.GetTodoObject().get(position).getStatus());
 
 		setup_adapter();
 		displayCount();
 
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_todo) {
-			Intent i = new Intent(this, MainActivity.class);
-			startActivity(i);
-			return true;
-		} else if (id == R.id.action_archive) {
-			Intent i = new Intent(this, ArchiveActivity.class);
-			startActivity(i);
-			return true;
-		} else if (id == R.id.action_share) {
-			Intent i = new Intent(this, ShareActivity.class);
-			startActivity(i);
-			return true;
-		}
-
-		return super.onOptionsItemSelected(item);
-	}
 
 	public void add_todo() {
 
@@ -286,8 +279,9 @@ public class MainActivity extends ActionBarActivity {
 		displayCount();
 
 		fileSaverLoader.saveObject(this, TaskSingleton.GetTodoObject(), todo_file);
-		fileSaverLoader.saveObject(this, TaskSingleton.GetArchObject(),
-				arch_file);
+		fileSaverLoader.saveObject(this, TaskSingleton.GetArchObject(),arch_file);
+		
+		
 		setup_adapter();
 
 		// Intent i = new Intent(this, ArchiveActivity.class);
@@ -331,6 +325,40 @@ public class MainActivity extends ActionBarActivity {
 		checkedCount.setText(Integer.toString(checked));
 		uncheckedCount.setText(Integer.toString(unchecked));
 
+	}
+	
+	
+	
+	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_todo) {
+			Intent i = new Intent(this, MainActivity.class);
+			startActivity(i);
+			return true;
+		} else if (id == R.id.action_archive) {
+			Intent i = new Intent(this, ArchiveActivity.class);
+			startActivity(i);
+			return true;
+		} else if (id == R.id.action_share) {
+			Intent i = new Intent(this, ShareActivity.class);
+			startActivity(i);
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 }

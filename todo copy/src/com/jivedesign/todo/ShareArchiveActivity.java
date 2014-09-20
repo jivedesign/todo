@@ -46,6 +46,15 @@ public class ShareArchiveActivity extends Activity {
 	    setup_adapter();
 	}
 	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		setup_adapter();
+		
+	}
+	
+	
 	
 	
 	public void setup_adapter() {

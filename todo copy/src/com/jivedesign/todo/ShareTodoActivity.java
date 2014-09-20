@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import com.example.todo.R;
 
+import controller.Task;
+import controller.task_ListAdapter;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,11 +15,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
-import controller.Task;
-import controller.task_ListAdapter;
 
 public class ShareTodoActivity extends Activity {
 
@@ -47,10 +48,15 @@ public class ShareTodoActivity extends Activity {
 	    email_address = intent.getStringExtra("email");
 	    
 	    setup_adapter();
-	    
-	    
-	    
-	    
+	}
+	
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		setup_adapter();
+		
 	}
 	
 	
