@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.todo.R;
+import com.jivedesign.todo.TaskSingleton;
 
 public class task_ListAdapter extends ArrayAdapter<Task> {
 
@@ -70,6 +71,10 @@ public class task_ListAdapter extends ArrayAdapter<Task> {
 		
 		//Does the selected state change as well as loads into ListView as selected or not
 				
+		
+		Log.d("onclick", "*** tla: " + position);
+		
+		
 		Task task = taskList.get(position);
 
 		holder.todo_checkBox.setChecked(task.getStatus());

@@ -2,11 +2,13 @@ package com.jivedesign.todo;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.util.Log;
 import controller.Task;
 
@@ -14,8 +16,8 @@ public class Utils {
 
 	private static int LastID = 0;
 
-	private static String todofile = "/taskFile.ser";
-	private static String archfile = "/archFile.ser";
+	private static String todofile = "taskFile.sav";
+	private static String archfile = "archFile.sav";
 
 	public static int getNewID() {
 		// Gives new ID value.
@@ -33,74 +35,70 @@ public class Utils {
 		return LastID;
 	}
 
-	public static void saveObject() {
+	public static void saveObject(Context context) {
 		// REFERENCED FROM:
 		// http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
 
-		Log.d("onclick", "********* SAVING: " + TaskSingleton.GetTodoObject());
-
-		FileOutputStream fos = null;
-		ObjectOutputStream out = null;
-
+		
 		try {
 
-			fos = new FileOutputStream(todofile);
-			out = new ObjectOutputStream(fos);
-			// out.writeObject(TaskSingleton.GetTodoObject());
+			FileOutputStream fos = context.openFileOutput(todofile,
+                    Context.MODE_PRIVATE);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			Log.d("onclick", "********* SAVING: ");
+			oos.writeObject(TaskSingleton.GetTodoObject());
 
-			for (int i = TaskSingleton.GetTodoObject().size(); TaskSingleton
-					.GetTodoObject().size() > i; i--) {
-				out.writeObject(i);
-			}
+			fos.close();
 
-			// fos = new FileOutputStream(archfile);
-			// out.writeObject(TaskSingleton.GetArchObject());
-
-			out.close();
+			
 		} catch (Exception ex) {
+			Log.d("onclick", "**** CATCH ***** SAVING: ");
 			ex.printStackTrace();
 		}
 
 	}
 
-	public static void readObject() {
+	public static void readObject(Context context) throws FileNotFoundException {
 		// Read task objects to internal storage - returns task object
 
 		// REFERENCED FROM:
 		// http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
 
-		FileInputStream fis = null;
-		ObjectInputStream ois = null;
-
 		// Check if file exists, else make new one
 
-		File file = new File(todofile);
-		if (file.exists()) {
+		try {
 
-			Log.d("onclick", "** READING OLD FILE*****");
-
-			try {
-
-				fis = new FileInputStream(todofile);
-				ois = new ObjectInputStream(fis);
-
-				// TaskSingleton.GetTodoObject().addAll((Collection<? extends
-				// Task>)
-				// ois.readObject());
-
-				int i = 0;
-				while (fis != null) {
-					TaskSingleton.GetTodoObject().add((Task) ois.readObject());
-					i += 1;
-				}
-				ois.close();
-			} catch (Exception ex) {
-				ex.printStackTrace();
+			FileInputStream fis = context.openFileInput(todofile);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			
+			ArrayList<Task> tasksFromFile = (ArrayList<Task>) ois.readObject();
+			Log.d("onclick", "********* TASK FROM FILE " + tasksFromFile.size());
+			
+			Log.d("onclick",
+					"********* FROM FILE: ");
+			
+			for (int i = 0; i < tasksFromFile.size(); i++) {
+				TaskSingleton.GetTodoObject().add(tasksFromFile.get(i));
 			}
+			ois.close();
+			
+			Log.d("onclick", "********* TASK FROM FILE " + tasksFromFile.size());
+			
+			Log.d("onclick",
+					"********* FROM FILE: ");
+			
+			for (int i = 0; i < tasksFromFile.size(); i++) {
+				TaskSingleton.GetTodoObject().add(tasksFromFile.get(i));
+			}
+			ois.close();
+			
+
+		} catch (Exception ex) {
+			Log.d("onclick", "**** CATCH ***** READ ");
+			ex.printStackTrace();
 		}
 
-		Log.d("onclick",
-				"********* FROM FILE: " + TaskSingleton.GetTodoObject());
+		
 
 	}
 

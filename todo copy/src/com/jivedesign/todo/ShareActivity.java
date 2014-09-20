@@ -108,14 +108,14 @@ public class ShareActivity extends Activity {
 	}
 
 	// Array radioAdapter = array.createFromResource(this, R.id.shareRadioMenu);
-
-	public void getEmail(View v) {
-
-		EditText emailString = (EditText) findViewById(R.id.email_address);
-		email_address = (String) emailString.getText().toString();
-		Log.d("onclick", "*****EMAIL ADDRESS " + email_address);
-
-	}
+//
+//	public void getEmail(View v) {
+//
+//		EditText emailString = (EditText) findViewById(R.id.email_address);
+//		email_address = (String) emailString.getText().toString();
+//		Log.d("onclick", "*****EMAIL ADDRESS " + email_address);
+//
+//	}
 
 	public void toSendTodos(View v) {
 		Intent i = new Intent(this, ShareTodoActivity.class);

@@ -1,5 +1,7 @@
 package com.jivedesign.todo;
 
+import java.io.FileNotFoundException;
+
 import com.example.todo.R;
 
 import android.app.AlertDialog;
@@ -20,6 +22,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import controller.Task;
 import controller.task_ListAdapter;
@@ -42,9 +45,13 @@ public class MainActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		Utils.readObject();
-		
-		
+		try {
+			Utils.readObject(this);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		todoListView = (ListView) findViewById(R.id.todo_listView);
 
 		final Button add_todoButton = (Button) findViewById(R.id.add_Button);
@@ -59,6 +66,10 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 
+		Log.d("onclick", "********* SIZE OF SINGLETON: "
+				+ TaskSingleton.GetTodoObject().size());
+
+
 		setup_adapter();
 
 	}
@@ -66,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
 	public void setup_adapter() {
 
 		// Save the Singleton
-		Utils.saveObject();
+		Utils.saveObject(this);
 		displayCount();
 
 		// Pump list adapter full of task_entities which contain items of
@@ -79,14 +90,11 @@ public class MainActivity extends ActionBarActivity {
 		ListView newTodoListView = todoListView;
 		newTodoListView.setAdapter(tla);
 
-		Log.d("onclick", "********* THIS IS SETUP ADAPTER: ");
-
 		newTodoListView
 				.setOnItemLongClickListener(new OnItemLongClickListener() {
 					public boolean onItemLongClick(AdapterView<?> parent,
 							View view, int position, long id) {
 						{
-							Log.d("onclick", "********* THIS IS A LONG CLICK: ");
 							// Task task = todoList.get(position);
 							edit_todo(position);
 						}
@@ -96,41 +104,37 @@ public class MainActivity extends ActionBarActivity {
 
 		newTodoListView.setOnItemClickListener(new OnItemClickListener() {
 
-			
-			
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					final int position, long id) {
 				// TODO Auto-generated method stub
-				
-				
-				Log.d("onclick", "todo status from list bEFORE: "
-						+ TaskSingleton.GetTodoObject().get(position)
-								.getStatus());
 
-				if (TaskSingleton.GetTodoObject().get(position).getStatus() == false) {
-					TaskSingleton.GetTodoObject().get(position).setStatus(true);
-					
-
-				} else {
-					TaskSingleton.GetTodoObject().get(position)
-							.setStatus(false);
-				}
-
-				Log.d("onclick", "todo status from list AFTER: "
-						+ TaskSingleton.GetTodoObject().get(position)
-								.getStatus());
-				
-				setup_adapter();
-
-				displayCount();
+				taskChangeStatus(position);
 
 			}
 		});
-		
-		Utils.readObject();
-	
-		
+
+	}
+
+	protected void taskChangeStatus(int position) {
+		// TODO Auto-generated method stub
+
+		Log.d("onclick", "todo status from list bEFORE: "
+				+ TaskSingleton.GetTodoObject().get(position).getStatus());
+
+		if (TaskSingleton.GetTodoObject().get(position).getStatus() == false) {
+			TaskSingleton.GetTodoObject().get(position).setStatus(true);
+
+		} else {
+			TaskSingleton.GetTodoObject().get(position).setStatus(false);
+		}
+
+		Log.d("onclick", "todo status from list AFTER: "
+				+ TaskSingleton.GetTodoObject().get(position).getStatus());
+
+		setup_adapter();
+		displayCount();
+
 	}
 
 	@Override
@@ -172,7 +176,8 @@ public class MainActivity extends ActionBarActivity {
 		// Get XML file to view
 		View promptsView = li.inflate(R.layout.add_todo_dialog, null);
 
-		final EditText taskName = (EditText) promptsView.findViewById(R.id.add_todo_dialog);
+		final EditText taskName = (EditText) promptsView
+				.findViewById(R.id.add_todo_dialog);
 
 		// Create a new AlertDialog
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -216,7 +221,8 @@ public class MainActivity extends ActionBarActivity {
 		AlertDialog alertDialog = alertDialogBuilder.create();
 
 		alertDialog.show();
-		
+
+		Utils.saveObject(this);
 		setup_adapter();
 
 	}
@@ -259,7 +265,7 @@ public class MainActivity extends ActionBarActivity {
 						});
 		displayCount();
 		setup_adapter();
-		
+
 		AlertDialog alertDialog = editDialog.create();
 		alertDialog.show();
 
@@ -268,7 +274,7 @@ public class MainActivity extends ActionBarActivity {
 	public void toArchive(int pos) {
 
 		TaskSingleton.GetTodoObject().get(pos).setGroup("archive");
-		
+
 		TaskSingleton.GetArchObject().add(
 				(Task) TaskSingleton.GetTodoObject().get(pos));
 		TaskSingleton.GetTodoObject().remove(pos);
@@ -277,11 +283,12 @@ public class MainActivity extends ActionBarActivity {
 
 		displayCount();
 
+		Utils.saveObject(context);
 		setup_adapter();
-		
-//		Intent i = new Intent(this, ArchiveActivity.class);
-//		startActivity(i);
-		
+
+		// Intent i = new Intent(this, ArchiveActivity.class);
+		// startActivity(i);
+
 	}
 
 	public void counts() {
@@ -305,12 +312,6 @@ public class MainActivity extends ActionBarActivity {
 
 			}
 		}
-
-		Log.d("onclick", "********* Total COunts " + total + "Actual total"
-				+ TaskSingleton.GetTodoObject().size());
-		Log.d("onclick", "********* checked " + checked);
-		Log.d("onclick", "********* unchecked " + unchecked);
-
 	}
 
 	public void displayCount() {

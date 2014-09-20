@@ -137,18 +137,22 @@
         tools:listitem="@layout/task_entity" />
 
    <RelativeLayout
+       
        android:layout_width="fill_parent"
        android:layout_height="wrap_content"
        android:layout_alignParentBottom="true"
        android:layout_centerHorizontal="true"
        android:layout_marginTop="5dp"
+       android:layout_marginBottom="5dp"
        android:gravity="center|bottom"
-       android:orientation="vertical" >
+       android:orientation="vertical" 
+      >
 
        <Button
            android:id="@+id/add_Button"
-           android:layout_width="50sp"
-           android:layout_height="50sp"
+           android:layout_width="70sp"
+           android:layout_height="70sp"
+           
            android:background="@drawable/ic_add_icon" />
    </RelativeLayout>
     
