@@ -52,7 +52,7 @@ public class ShareActivity extends Activity {
 			 Emailer.emailTasks(this, "all Todos!", email_address, TaskSingleton.GetTodoObject());
 			 break;
 		case 2:
-			 Emailer.emailTasks(this, "all Archive!", email_address, TaskSingleton.GetArchObject());
+			 Emailer.emailTasks(this, "all Archives!", email_address, TaskSingleton.GetArchObject());
 			 break;
 		default:
 			break;
@@ -95,15 +95,7 @@ public class ShareActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	// Array radioAdapter = array.createFromResource(this, R.id.shareRadioMenu);
-//
-//	public void getEmail(View v) {
-//
-//		EditText emailString = (EditText) findViewById(R.id.email_address);
-//		email_address = (String) emailString.getText().toString();
-//		Log.d("onclick", "*****EMAIL ADDRESS " + email_address);
-//
-//	}
+
 
 	public void toSendTodos(View v) {
 		Intent i = new Intent(this, ShareTodoActivity.class);

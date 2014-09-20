@@ -46,14 +46,6 @@ public class ArchiveActivity extends Activity {
 		setContentView(R.layout.arch_frag);
 		// TODO Auto-generated method stub
 
-		try {
-			fileSaverLoader.readObject(this, TaskSingleton.GetArchObject(),
-					arch_file);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		archiveListView = (ListView) findViewById(R.id.archive_ListView);
 		displayCount();
 		setup_adapter();

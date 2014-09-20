@@ -49,6 +49,8 @@ public class MainActivity extends ActionBarActivity {
 		
 		try {
 			fileSaverLoader.readObject(this, TaskSingleton.GetTodoObject(), todo_file);
+			fileSaverLoader.readObject(this, TaskSingleton.GetArchObject(),
+					arch_file);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

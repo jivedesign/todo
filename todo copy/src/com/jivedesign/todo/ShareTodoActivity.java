@@ -1,5 +1,6 @@
 package com.jivedesign.todo;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import com.example.todo.R;
@@ -11,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,21 +34,23 @@ public class ShareTodoActivity extends Activity {
 	int duration = Toast.LENGTH_SHORT;
 	
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.share_todos);
 	    
-	    
-	    Intent intent = getIntent();
-	    email_address = intent.getStringExtra("email");
-	    
+	    try {
+			fileSaverLoader.readObject(this, TaskSingleton.GetTodoObject(), "todoFile.sav");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//	    
+//	    
+//	    Intent intent = getIntent();
+//	    email_address = intent.getStringExtra("email");
+//	    
 	    setup_adapter();
 	}
 	
@@ -61,12 +65,10 @@ public class ShareTodoActivity extends Activity {
 	
 	
 	public void setup_adapter() {
-		
+ 		
 		tla = new task_ListAdapter(this, R.layout.share_todos, TaskSingleton.GetTodoObject());
 		shareTodoListView = (ListView) findViewById(R.id.share_todoList);
 		shareTodoListView.setAdapter(tla);
-		
-		
 		
 		shareTodoListView
 			.setOnItemClickListener(new OnItemClickListener() {
@@ -83,14 +85,13 @@ public class ShareTodoActivity extends Activity {
 					toast.show();
 					
 					someTodosList.add(selectedTask);
-					
 				}
 			});
-		
 	}
 	
 	
 	public void emailSomeTodos(View v) {
+		Log.d("onclick", "*LIST from Share Arch " + someTodosList.size());
 		Emailer.emailTasks(this, "Some todos", email_address, someTodosList);
 		
 	}

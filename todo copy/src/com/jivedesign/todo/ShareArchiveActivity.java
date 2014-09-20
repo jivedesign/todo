@@ -1,5 +1,6 @@
 package com.jivedesign.todo;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import com.example.todo.R;
@@ -11,6 +12,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,8 +42,16 @@ public class ShareArchiveActivity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.share_archives);
 	    
-	    Intent intent = getIntent();
-	    email_address = intent.getStringExtra("email");
+	    try {
+			fileSaverLoader.readObject(this, TaskSingleton.GetArchObject(), "archFile.sav");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	    
+//	    Intent intent = getIntent();
+//	    email_address = intent.getStringExtra("email");
 
 	    setup_adapter();
 	}
@@ -85,6 +95,7 @@ public class ShareArchiveActivity extends Activity {
 	
 
 	public void emailSomeArchives(View v) {
+		Log.d("onclick", "*LIST from Share Arch " + someArchivesList.size());
 		Emailer.emailTasks(this, "some archives", email_address, someArchivesList);
 		
 	}
