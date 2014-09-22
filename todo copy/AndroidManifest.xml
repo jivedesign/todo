@@ -13,7 +13,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="Todo"
+        android:label="jhn-TodoApp"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.jivedesign.todo.MainActivity"
