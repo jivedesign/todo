@@ -11,6 +11,7 @@ import controller.task_ListAdapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -23,81 +24,87 @@ import android.widget.Toast;
 
 public class ShareTodoActivity extends Activity {
 
-	String email_address ="";
-	
+	String email_address = "";
+
 	private ListView shareTodoListView;
 	private task_ListAdapter tla;
 	private ArrayList<Task> someTodosList = new ArrayList<Task>();
-	
+
 	Context context = this;
 	CharSequence text = "You have selected ";
 	int duration = Toast.LENGTH_SHORT;
-	
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	    super.onCreate(savedInstanceState);
-	    setContentView(R.layout.share_todos);
-	    
-	    try {
-			fileSaverLoader.readObject(this, TaskSingleton.GetTodoObject(), "todoFile.sav");
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.share_todos);
+
+		try {
+			fileSaverLoader.readObject(this, TaskSingleton.GetTodoObject(),
+					"todoFile.sav");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//	    
-//	    
-//	    Intent intent = getIntent();
-//	    email_address = intent.getStringExtra("email");
-//	    
-	    setup_adapter();
+
+		setup_adapter();
 	}
-	
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 		setup_adapter();
-		
+
 	}
-	
-	
+
 	public void setup_adapter() {
- 		
-		tla = new task_ListAdapter(this, R.layout.share_todos, TaskSingleton.GetTodoObject());
+
+		tla = new task_ListAdapter(this, R.layout.share_todos,
+				TaskSingleton.GetTodoObject());
 		shareTodoListView = (ListView) findViewById(R.id.share_todoList);
 		shareTodoListView.setAdapter(tla);
-		
-		shareTodoListView
-			.setOnItemClickListener(new OnItemClickListener() {
 
-				@Override
-				public void onItemClick(AdapterView<?> parent, View view,
-						int position, long id) {
-					// TODO Auto-generated method stub
-					
-					Task selectedTask = tla.getItem(position);
-					
-					int duration = Toast.LENGTH_SHORT;
-					Toast toast = Toast.makeText(context, text + selectedTask.getTaskName(), duration);
-					toast.show();
-					
+		shareTodoListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+
+				Task selectedTask = tla.getItem(position);
+
+				// int duration = Toast.LENGTH_SHORT;
+				// Toast toast = Toast.makeText(context, text +
+				// selectedTask.getTaskName(), duration);
+				// toast.show();
+
+				if (!someTodosList.contains(selectedTask)) {
 					someTodosList.add(selectedTask);
+					view.setBackgroundColor(0xb3FFFFFF);
+				} else if (someTodosList.contains(selectedTask)) {
+					someTodosList.remove(selectedTask);
+					view.setBackgroundColor(0x33FFFFFF);
+
 				}
-			});
+
+			}
+		});
 	}
-	
-	
+
 	public void emailSomeTodos(View v) {
-		Log.d("onclick", "*LIST from Share Arch " + someTodosList.size());
-		Emailer.emailTasks(this, "Some todos", email_address, someTodosList);
-		
+		// Log.d("onclick", "*LIST from Share Arch " + someTodosList.size());
+		Emailer.emailTasks(this, "some todos", email_address, someTodosList);
+
 	}
-	
-	
-	
+
+	public void cancel_share(View v) {
+
+		Intent i = new Intent(this, ShareActivity.class);
+		startActivity(i);
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -127,6 +134,5 @@ public class ShareTodoActivity extends Activity {
 
 		return super.onOptionsItemSelected(item);
 	}
-	
 
 }

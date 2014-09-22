@@ -82,11 +82,18 @@ public class ShareArchiveActivity extends Activity {
 				
 				Task selectedTask = tla.getItem(position);
 				
-				int duration = Toast.LENGTH_SHORT;
-				Toast toast = Toast.makeText(context, text + selectedTask.getTaskName(), duration);
-				toast.show();
+//				int duration = Toast.LENGTH_SHORT;
+//				Toast toast = Toast.makeText(context, text + selectedTask.getTaskName(), duration);
+//				toast.show();
 				
-				someArchivesList.add(selectedTask);
+				if (!someArchivesList.contains(selectedTask)) {
+					someArchivesList.add(selectedTask);
+					view.setBackgroundColor(0xb3FFFFFF);
+				} else if (someArchivesList.contains(selectedTask)) {
+					someArchivesList.remove(selectedTask);
+					view.setBackgroundColor(0x33FFFFFF);
+					
+				}
 				
 			}
 		});
@@ -98,6 +105,13 @@ public class ShareArchiveActivity extends Activity {
 		Log.d("onclick", "*LIST from Share Arch " + someArchivesList.size());
 		Emailer.emailTasks(this, "some archives", email_address, someArchivesList);
 		
+	}
+	
+	
+	public void cancel_share(View v) {
+		
+		Intent i = new Intent(this, ShareActivity.class);
+		startActivity(i);
 	}
 	
 	@Override

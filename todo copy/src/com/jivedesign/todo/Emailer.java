@@ -34,7 +34,7 @@ public class Emailer extends Activity {
 		intent.setData(Uri.parse("mailto:"));
 		intent.setType("plain/text");
 		intent.putExtra(Intent.EXTRA_EMAIL, new String[] { email_address });
-		intent.putExtra(Intent.EXTRA_SUBJECT, "A task list of " + list_type);
+		intent.putExtra(Intent.EXTRA_SUBJECT, "Todo App: Here's an email of " + list_type);
 
 		Log.d("onclick", "*LIST SIZE " + taskArray.size());
 		if (taskArray.size() > 0) {
@@ -43,15 +43,15 @@ public class Emailer extends Activity {
 		for (int i = 0; i < taskArray.size(); i++) {
 
 			email_body += "Task name: " + taskArray.get(i).getTaskName()
-					+ "\t\t" + "Type: " + taskArray.get(i).getGroup() + "\t\t"
-					+ "Done?: " + taskArray.get(i).getStatus() + "\n";
+					+ "\t\t\t" + "Type: " + taskArray.get(i).getGroup() + "\t\t"
+					+ "Done?: " + taskArray.get(i).getStatus() + "\n\n";
 			Log.d("onclick", "*EMAIL Body " + email_body);
 		}
 
 		intent.putExtra(Intent.EXTRA_TEXT, email_body);
 
 		context.startActivity(Intent.createChooser(intent,
-				"Sending email of tasks"));
+				"Tasks are on their way!"));
 
 	}
 

@@ -2,15 +2,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#691800"
      >
     
 
     <ListView
         android:id="@+id/share_archiveList"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:layout_marginBottom="70dp"
+        >
 
 </ListView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
+
+        <Button
+        android:id="@+id/cancel_share"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+    
+        android:layout_marginRight="20dp"
+        android:background="#ddd"
+        android:onClick="cancel_share"
+        android:text="Cancel" /> 
+        
     <Button
         android:id="@+id/email_archives"
         android:layout_width="100dp"
@@ -21,6 +43,6 @@
         android:text="Email" 
         android:background="#ddd"
         android:onClick="emailSomeArchives"/>
-    
+    </LinearLayout>
     
 </RelativeLayout>

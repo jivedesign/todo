@@ -1,5 +1,6 @@
 package com.jivedesign.todo;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import com.example.todo.R;
@@ -22,6 +23,8 @@ import android.widget.RadioGroup;
 
 public class ShareActivity extends Activity {
 
+	String todo_file = "todoFile.sav";
+	String arch_file = "archFile.sav";
 	private String email_address = "";
 
 	/** Called when the activity is first created. */
@@ -29,6 +32,15 @@ public class ShareActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.share_activity);
+		
+		try {
+			fileSaverLoader.readObject(this, TaskSingleton.GetTodoObject(), todo_file);
+			fileSaverLoader.readObject(this, TaskSingleton.GetArchObject(),
+					arch_file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

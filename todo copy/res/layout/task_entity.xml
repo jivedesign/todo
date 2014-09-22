@@ -6,6 +6,7 @@
     android:id="@+id/todo_entity_body"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#30ffffff"
     >
 
     <CheckBox
@@ -28,7 +29,7 @@
         android:clickable="false"
         android:focusable="false"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000"
+        android:textColor="#fff"
         android:textStyle="bold" />
 
 </RelativeLayout>
