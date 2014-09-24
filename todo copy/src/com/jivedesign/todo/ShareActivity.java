@@ -21,7 +21,7 @@ package com.jivedesign.todo;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import com.example.todo.R;
+import com.jivedesign.todo.R;
 
 import controller.Task;
 

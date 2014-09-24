@@ -12,7 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.todo.R;
+import com.jivedesign.todo.R;
 import com.jivedesign.todo.TaskSingleton;
 
 public class task_ListAdapter extends ArrayAdapter<Task> {

@@ -20,7 +20,7 @@ package com.jivedesign.todo;
 
 import java.io.FileNotFoundException;
 
-import com.example.todo.R;
+import com.jivedesign.todo.R;
 
 import android.app.AlertDialog;
 import android.content.Context;

@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.todo.R;
+import com.jivedesign.todo.R;
 
 
 public class archive_ListAdapter extends task_ListAdapter {
