@@ -79,6 +79,8 @@ public class ShareTodoActivity extends Activity {
 	}
 
 	public void setup_adapter() {
+		
+		// Sets up the list of todos for selection
 
 		tla = new task_ListAdapter(this, R.layout.share_todos,
 				TaskSingleton.GetTodoObject());
@@ -113,13 +115,16 @@ public class ShareTodoActivity extends Activity {
 	}
 
 	public void emailSomeTodos(View v) {
+		
+		// Emails the selection of todos
+		
 		// Log.d("onclick", "*LIST from Share Arch " + someTodosList.size());
 		Emailer.emailTasks(this, "some todos", email_address, someTodosList);
 
 	}
 
 	public void cancel_share(View v) {
-
+		
 		Intent i = new Intent(this, ShareActivity.class);
 		startActivity(i);
 	}

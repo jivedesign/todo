@@ -16,6 +16,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+/*
+ * Share Activity class displays a selection of options for sending todos or archives
+ * */
+
 package com.jivedesign.todo;
 
 import java.io.FileNotFoundException;
@@ -64,6 +68,8 @@ public class ShareActivity extends Activity {
 
 	public void emailAll(View v) {
 
+		// Loads all Todos and Archives into one list for sending through email
+		
 		RadioGroup radioButtonGroup = (RadioGroup) findViewById(R.id.shareRadioMenu);
 
 		int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();

@@ -32,10 +32,13 @@ import controller.Task;
 
 public class Utils {
 
+	// Utils is a general class that has simple and general methods
+	
 	private static int LastID = 0;
 
 
 	public static int getNewID() {
+		
 		// Gives new ID value.
 
 		if (LastID == 0) {

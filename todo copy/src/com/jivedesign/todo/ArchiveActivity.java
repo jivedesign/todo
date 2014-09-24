@@ -16,6 +16,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+/*
+ *  Is the Activity for Archive. Contains a listView of Archived tasks to view and modify
+ *  
+ */
+
 
 package com.jivedesign.todo;
 
@@ -79,6 +84,8 @@ public class ArchiveActivity extends Activity {
 	}
 
 	public void setup_adapter() {
+		
+		// Loads archive items into the listview
 
 		// Save the Singleton
 		fileSaverLoader.saveObject(this, TaskSingleton.GetArchObject(),
@@ -109,6 +116,9 @@ public class ArchiveActivity extends Activity {
 	}
 
 	public void edit_arch(final int position) {
+		
+		// Brings up dialog box with options to Unarchive or delete
+		
 		// http://developer.android.com/reference/android/app/AlertDialog.Builder.html#setSingleChoiceItems(java.lang.CharSequence[],
 		// int, android.content.DialogInterface.OnClickListener)
 		// Edit existing todo with LONG CLICK
@@ -152,6 +162,8 @@ public class ArchiveActivity extends Activity {
 	
 
 	public void toTodo(int pos) {
+		
+		// Sends Archived tasks to the Todo list
 
 		TaskSingleton.GetArchObject().get(pos).setGroup("todo");
 		TaskSingleton.GetTodoObject().add((Task) TaskSingleton.GetArchObject().get(pos));
@@ -170,6 +182,8 @@ public class ArchiveActivity extends Activity {
 	}
 
 	public void counts() {
+		
+		// Recounts status and number of tasks
 
 		checked = 0;
 		unchecked = 0;
@@ -191,6 +205,9 @@ public class ArchiveActivity extends Activity {
 
 	public void displayCount() {
 
+		// Updates the counts on screen
+		
+		
 		counts();
 
 		TextView totalCount = (TextView) findViewById(R.id.arch_total_count);

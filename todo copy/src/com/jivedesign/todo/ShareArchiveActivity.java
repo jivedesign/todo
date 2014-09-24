@@ -87,6 +87,9 @@ public class ShareArchiveActivity extends Activity {
 	
 	
 	public void setup_adapter() {
+		
+		// Sets up the list of Archives for selection
+		
 		tla = new task_ListAdapter(this, R.layout.share_archives, TaskSingleton.GetArchObject());
 		shareArchiveListView = (ListView) findViewById(R.id.share_archiveList);
 		shareArchiveListView.setAdapter(tla);
@@ -121,6 +124,9 @@ public class ShareArchiveActivity extends Activity {
 	
 
 	public void emailSomeArchives(View v) {
+		
+		// Emails a selection of archives
+		
 		//Log.d("onclick", "*LIST from Share Arch " + someArchivesList.size());
 		Emailer.emailTasks(this, "some archives", email_address, someArchivesList);
 		

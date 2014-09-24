@@ -16,6 +16,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+/*
+ * Emails a list of tasks
+ */
+
 
 package com.jivedesign.todo;
 
@@ -44,6 +48,8 @@ public class Emailer extends Activity {
 	public static void emailTasks(Context context, String list_type,
 			String email_address, ArrayList<Task> taskArray) {
 
+		// Emails the list of tasks
+		
 		// http://www.tutorialspoint.com/android/android_sending_email.htm
 
 		String email_body = "";

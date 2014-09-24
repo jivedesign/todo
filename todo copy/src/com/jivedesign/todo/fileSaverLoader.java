@@ -16,6 +16,10 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+/*
+ * Saves and Loads tasks from file into the Task SIngleton
+ */
+
 
 package com.jivedesign.todo;
 
@@ -38,6 +42,10 @@ public class fileSaverLoader {
 
 	public static void saveObject(Context context, ArrayList<Task> taskArray,
 			String file_name) {
+		
+		// Saves the items of the todo list to file
+		
+		
 		// REFERENCED FROM:
 		// http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
 

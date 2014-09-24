@@ -16,6 +16,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+/*
+ *  The Main Activity acts as the Todo Activity. It contains methods for modifying Todo and Archive lists
+ *  as well as methods for displaying counts. 
+ *   
+ */
+
 package com.jivedesign.todo;
 
 import java.io.FileNotFoundException;
@@ -109,6 +115,8 @@ public class MainActivity extends ActionBarActivity {
 
 	
 	public void setup_adapter() {
+		
+		// Generates the list of tasks into the list view for checking and unchecking
 
 		// Save the Singleton
 		fileSaverLoader.saveObject(this, TaskSingleton.GetTodoObject(), todo_file);
@@ -151,10 +159,8 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	protected void taskChangeStatus(int position) {
-		// TODO Auto-generated method stub
-
-//		Log.d("onclick", "todo status from list bEFORE: "
-//				+ TaskSingleton.GetTodoObject().get(position).getStatus());
+		
+		// Changes the status of task when clicked
 
 		if (TaskSingleton.GetTodoObject().get(position).getStatus() == false) {
 			TaskSingleton.GetTodoObject().get(position).setStatus(true);
@@ -175,7 +181,7 @@ public class MainActivity extends ActionBarActivity {
 
 	public void add_todo() {
 
-		// WITH HELP FROM JASMINE WOO, a real human
+		// Adds a new todo to the todo list
 
 		LayoutInflater li = LayoutInflater.from(this);
 
@@ -234,6 +240,10 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	public void edit_todo(final int position) {
+		
+		// Brings up DIalog window with options to Archive and Delete
+		
+		
 		// http://developer.android.com/reference/android/app/AlertDialog.Builder.html#setSingleChoiceItems(java.lang.CharSequence[],
 		// int, android.content.DialogInterface.OnClickListener)
 		// Edit existing todo with LONG CLICK
@@ -279,6 +289,8 @@ public class MainActivity extends ActionBarActivity {
 
 	public void toArchive(int pos) {
 
+		// Sends the task item to Archive list
+		
 		TaskSingleton.GetTodoObject().get(pos).setGroup("archive");
 
 		TaskSingleton.GetArchObject().add(
@@ -302,6 +314,8 @@ public class MainActivity extends ActionBarActivity {
 
 	public void counts() {
 
+		// Counts the tasks and their statuses
+		
 		checked = 0;
 		unchecked = 0;
 
@@ -310,12 +324,8 @@ public class MainActivity extends ActionBarActivity {
 			for (int i = 0; i < TaskSingleton.GetTodoObject().size(); i++) {
 
 				if (TaskSingleton.GetTodoObject().get(i).getStatus() == false) {
-//					Log.d("onclick", "unchecked "
-//							+ TaskSingleton.GetTodoObject().get(i).getStatus());
 					unchecked += 1;
 				} else {
-//					Log.d("onclick", "checked "
-//							+ TaskSingleton.GetTodoObject().get(i).getStatus());
 					checked += 1;
 				}
 
@@ -325,6 +335,9 @@ public class MainActivity extends ActionBarActivity {
 
 	public void displayCount() {
 
+		// Updates the counts on screen
+		
+		
 		counts();
 
 		TextView totalCount = (TextView) findViewById(R.id.todo_total_count);

@@ -16,6 +16,11 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+/*
+ This Singleton class holds the list of Todo tasks and Archive tasks.
+ It is used throughout the application.
+ */
+
 
 package com.jivedesign.todo;
 
