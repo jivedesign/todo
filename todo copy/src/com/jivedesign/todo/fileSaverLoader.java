@@ -46,14 +46,14 @@ public class fileSaverLoader {
 			FileOutputStream fos = context.openFileOutput(file_name,
 					Context.MODE_PRIVATE);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			Log.d("onclick", "********* SAVING: ");
+			//Log.d("onclick", "********* SAVING: ");
 			oos.writeObject(taskArray);
 
 			fos.close();
 			oos.close();
 
 		} catch (Exception ex) {
-			Log.d("onclick", "**** CATCH ***** SAVING: ");
+			//Log.d("onclick", "**** CATCH ***** SAVING: ");
 			ex.printStackTrace();
 		}
 
@@ -76,7 +76,7 @@ public class fileSaverLoader {
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			ArrayList<Task> tasksFromFile = (ArrayList<Task>) ois.readObject();
-			Log.d("onclick", "********* TASK FROM FILE " + tasksFromFile.size());
+			//Log.d("onclick", "********* TASK FROM FILE " + tasksFromFile.size());
 
 //			for (int i = 0; i < tasksFromFile.size(); i++) {
 //				taskArray.add(tasksFromFile.get(i));
@@ -88,7 +88,7 @@ public class fileSaverLoader {
 			fis.close();
 
 		} catch (Exception ex) {
-			Log.d("onclick", "**** CATCH ***** READ ");
+			//Log.d("onclick", "**** CATCH ***** READ ");
 			ex.printStackTrace();
 		}
 

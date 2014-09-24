@@ -57,7 +57,7 @@ public class archive_ListAdapter extends task_ListAdapter {
 		row = inflater.inflate(layoutResourceId, parent, false);
 
 		TaskListHolder holder = null;
-		Log.v("ConvertView", String.valueOf(position));
+		//Log.v("ConvertView", String.valueOf(position));
 
 		LayoutInflater vi = (LayoutInflater) getContext().getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE);
@@ -72,29 +72,6 @@ public class archive_ListAdapter extends task_ListAdapter {
 		holder.arch_name = (TextView) row.findViewById(R.id.arch_name);
 
 		row.setTag(holder);
-
-		
-		// Handles the selected state change as well as loads into ListView as selected or not
-		
-		
-//		TRY DISABLING CHECKABLE - ONLY CHECKABLE FROM TODO ARCHIVE
-		//
-//		holder.arch_checkBox.setOnClickListener(new View.OnClickListener() {
-//
-//			public void onClick(View v) {
-//				CheckBox cb = (CheckBox) v;
-//				// Task task = (Task) cb.getTag();
-//				Task task = taskList.get(position);
-//
-//				Log.d("onclick",
-//						"todo status from list bEFORE: " + task.getStatus());
-//
-//				task.setStatus(cb.isChecked());
-//				Log.d("onclick",
-//						"todo status from list AFTER: " + task.getStatus());
-//			}
-//		});
-		
 
 		
 		Task task = taskList.get(position);

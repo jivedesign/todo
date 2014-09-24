@@ -100,7 +100,7 @@ public class MainActivity extends ActionBarActivity {
 			}
 		});
 
-		Log.d("onclick", "********* SIZE OF SINGLETON: "+ TaskSingleton.GetTodoObject().size());
+		//Log.d("onclick", "********* SIZE OF SINGLETON: "+ TaskSingleton.GetTodoObject().size());
 
 		setup_adapter();
 		
@@ -256,15 +256,15 @@ public class MainActivity extends ActionBarActivity {
 							public void onClick(DialogInterface dialog, int id) {
 								TaskSingleton.GetTodoObject().remove(position);
 
-								Log.d("onclick", "********* Deleted Task ");
+								//Log.d("onclick", "********* Deleted Task ");
 								setup_adapter();
 							}
 						})
 				.setPositiveButton("Archive",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								Log.d("onclick", "********* ARCHIVE ");
-								Log.d("onclick", "********* BEfore to ARCHIVE ");
+//								Log.d("onclick", "********* ARCHIVE ");
+//								Log.d("onclick", "********* BEfore to ARCHIVE ");
 								toArchive(position);
 
 							}
@@ -285,7 +285,7 @@ public class MainActivity extends ActionBarActivity {
 				(Task) TaskSingleton.GetTodoObject().get(pos));
 		TaskSingleton.GetTodoObject().remove(pos);
 
-		Log.d("onclick", "********* TO ARCHIVE ");
+		//Log.d("onclick", "********* TO ARCHIVE ");
 
 		displayCount();
 
@@ -310,12 +310,12 @@ public class MainActivity extends ActionBarActivity {
 			for (int i = 0; i < TaskSingleton.GetTodoObject().size(); i++) {
 
 				if (TaskSingleton.GetTodoObject().get(i).getStatus() == false) {
-					Log.d("onclick", "unchecked "
-							+ TaskSingleton.GetTodoObject().get(i).getStatus());
+//					Log.d("onclick", "unchecked "
+//							+ TaskSingleton.GetTodoObject().get(i).getStatus());
 					unchecked += 1;
 				} else {
-					Log.d("onclick", "checked "
-							+ TaskSingleton.GetTodoObject().get(i).getStatus());
+//					Log.d("onclick", "checked "
+//							+ TaskSingleton.GetTodoObject().get(i).getStatus());
 					checked += 1;
 				}
 

@@ -54,7 +54,7 @@ public class task_ListAdapter extends ArrayAdapter<Task> {
 		row = inflater.inflate(layoutResourceId, parent, false);
 
 		TaskListHolder holder = null;
-		Log.v("ConvertView", String.valueOf(position));
+		//Log.v("ConvertView", String.valueOf(position));
 
 		LayoutInflater vi = (LayoutInflater) getContext().getSystemService(
 				Context.LAYOUT_INFLATER_SERVICE);
@@ -72,7 +72,7 @@ public class task_ListAdapter extends ArrayAdapter<Task> {
 		//Does the selected state change as well as loads into ListView as selected or not
 				
 		
-		Log.d("onclick", "*** tla: " + position);
+		//Log.d("onclick", "*** tla: " + position);
 		
 		
 		Task task = taskList.get(position);

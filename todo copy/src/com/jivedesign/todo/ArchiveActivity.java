@@ -91,14 +91,14 @@ public class ArchiveActivity extends Activity {
 		// Pump adapter into Listview
 
 		ListView archListView = archiveListView;
-		Log.d("onclick", "********* THIS IS Archive SETUP ADAPTER: ");
+		//Log.d("onclick", "********* THIS IS Archive SETUP ADAPTER: ");
 		archListView.setAdapter(ala);
 
 		archListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 			public boolean onItemLongClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				{
-					Log.d("onclick", "********* THIS IS A ARCH LONG CLICK: ");
+					//Log.d("onclick", "********* THIS IS A ARCH LONG CLICK: ");
 					// Task task = todoList.get(position);
 					edit_arch(position);
 				}
@@ -157,7 +157,7 @@ public class ArchiveActivity extends Activity {
 		TaskSingleton.GetTodoObject().add((Task) TaskSingleton.GetArchObject().get(pos));
 		TaskSingleton.GetArchObject().remove(pos);
 
-		Log.d("onclick", "********* TO TODO ");
+		//Log.d("onclick", "********* TO TODO ");
 
 		fileSaverLoader.saveObject(this, TaskSingleton.GetArchObject(),
 				arch_file);
@@ -177,12 +177,12 @@ public class ArchiveActivity extends Activity {
 		if (!TaskSingleton.GetArchObject().isEmpty()) {
 			for (int i = 0; i < TaskSingleton.GetArchObject().size(); i++) {
 				if (TaskSingleton.GetArchObject().get(i).getStatus() == false) {
-					Log.d("onclick", "unchecked "
-							+ TaskSingleton.GetArchObject().get(i).getStatus());
+//					Log.d("onclick", "unchecked "
+//							+ TaskSingleton.GetArchObject().get(i).getStatus());
 					unchecked += 1;
 				} else {
-					Log.d("onclick", "checked "
-							+ TaskSingleton.GetArchObject().get(i).getStatus());
+//					Log.d("onclick", "checked "
+//							+ TaskSingleton.GetArchObject().get(i).getStatus());
 					checked += 1;
 				}
 			}

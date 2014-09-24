@@ -55,16 +55,16 @@ public class Emailer extends Activity {
 		intent.putExtra(Intent.EXTRA_EMAIL, new String[] { email_address });
 		intent.putExtra(Intent.EXTRA_SUBJECT, "Todo App: Here's an email of " + list_type);
 
-		Log.d("onclick", "*LIST SIZE " + taskArray.size());
-		if (taskArray.size() > 0) {
-			Log.d("onclick", "*LIST SIZE " + taskArray.get(0).getTaskName());
-		}
+//		Log.d("onclick", "*LIST SIZE " + taskArray.size());
+//		if (taskArray.size() > 0) {
+//			Log.d("onclick", "*LIST SIZE " + taskArray.get(0).getTaskName());
+//		}
 		for (int i = 0; i < taskArray.size(); i++) {
 
 			email_body += "Task name: " + taskArray.get(i).getTaskName()
 					+ "\t\t\t" + "Type: " + taskArray.get(i).getGroup() + "\t\t"
 					+ "Done?: " + taskArray.get(i).getStatus() + "\n\n";
-			Log.d("onclick", "*EMAIL Body " + email_body);
+			//Log.d("onclick", "*EMAIL Body " + email_body);
 		}
 
 		intent.putExtra(Intent.EXTRA_TEXT, email_body);

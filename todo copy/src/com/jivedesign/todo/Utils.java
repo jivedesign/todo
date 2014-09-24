@@ -40,13 +40,11 @@ public class Utils {
 
 		if (LastID == 0) {
 			LastID = 1;
-			Log.d("onclick", "********* NEW ID: " + LastID);
 
 			return LastID;
 
 		}
 		LastID = LastID + 1;
-		Log.d("onclick", "********* NEW ID: " + LastID);
 
 		return LastID;
 	}

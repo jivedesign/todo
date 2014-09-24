@@ -120,7 +120,7 @@ public class ShareArchiveActivity extends Activity {
 	
 
 	public void emailSomeArchives(View v) {
-		Log.d("onclick", "*LIST from Share Arch " + someArchivesList.size());
+		//Log.d("onclick", "*LIST from Share Arch " + someArchivesList.size());
 		Emailer.emailTasks(this, "some archives", email_address, someArchivesList);
 		
 	}
