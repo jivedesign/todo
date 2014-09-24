@@ -72,7 +72,8 @@ public class ShareTodoActivity extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
-
+		
+		someTodosList.clear();
 		setup_adapter();
 
 	}

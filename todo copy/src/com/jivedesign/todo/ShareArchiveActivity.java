@@ -78,6 +78,7 @@ public class ShareArchiveActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		
+		someArchivesList.clear();
 		setup_adapter();
 		
 	}
