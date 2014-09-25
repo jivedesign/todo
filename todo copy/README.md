@@ -4,6 +4,11 @@ This is a simple, attractive, and easy-to-use TODO list application. This app le
 
 The app is seperated into three sections; Todo, Archives, and Share, which are accessible from the "three dot" menu icon on the top right
 
+LICENSE:
+
+This project is licensed under the GNU GENERAL PUBLIC LICENSE which is available in the LICENSE file on this repository.
+
+
 
 INSTRUCTIONS:
 
@@ -21,10 +26,10 @@ Share:
 	Here you can share your Todos and Archives:
 		- You can share Everything, all TODOS, all ARCHIVES, a selection of TODOS, or a selection of Archives
 
-		Sharing a selection of Todos or Archives:
-			- Select which you would like to share a selection of. 
-				This will bring you to a new Activity corresponding to your selection
-			- Select the tasks you would like to send, then tap "Email"
+	Sharing a selection of Todos or Archives:
+		- Select which you would like to share a selection of. 
+			This will bring you to a new Activity corresponding to your selection
+		- Select the tasks you would like to send, then tap "Email"
 
 
 KNOWN USABILITY ISSUES:
@@ -37,22 +42,22 @@ RATIONALE:
 
 REFERENCES:
 
-	- Understanding Singletons
-		http://en.wikipedia.org/wiki/Singleton_pattern
+- Understanding Singletons
+	http://en.wikipedia.org/wiki/Singleton_pattern
+
+- RadioGroup/Radio Buttons : Android 
+	http://developer.android.com/guide/topics/ui/controls/radiobutton.html
+
+- Learning a bit about Dialog Boxes : Android
+	http://developer.android.com/reference/android/app/AlertDialog.Builder.html#setSingleChoiceItems(java.lang.CharSequence[],int, android.content.DialogInterface.OnClickListener)
+
+- Saving files : Android
+	http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
 	
-	- RadioGroup/Radio Buttons : Android 
-		http://developer.android.com/guide/topics/ui/controls/radiobutton.html
+- Learning about emailing
+	// http://www.tutorialspoint.com/android/android_sending_email.htm
 
-	- Learning a bit about Dialog Boxes : Android
-		http://developer.android.com/reference/android/app/AlertDialog.Builder.html#setSingleChoiceItems(java.lang.CharSequence[],int, android.content.DialogInterface.OnClickListener)
-
-	- Saving files : Android
-		http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
-		
-	- Learning about emailing
-		// http://www.tutorialspoint.com/android/android_sending_email.htm
-
-		http://www.tutorialspoint.com/about/about_disclaimer.htm
-		"You are granted permission to access the website and its contents only for the purpose of learning and/or business expansion."
+	http://www.tutorialspoint.com/about/about_disclaimer.htm
+	"You are granted permission to access the website and its contents only for the purpose of learning and/or business expansion."
 
 	
