@@ -32,12 +32,16 @@ Share:
 		- Select the tasks you would like to send, then tap "Email"
 
 
+
+RATIONALE:
+	Some classes are similar, such as the Main Activity and Archive Activity, List Adapters, and Share Activities. This is done in order to STYLE the activities differenly. I wanted the user to know where they were withouth having to read labels or indicators - namely, have a distinction between TODO Activity and ARCHIVE activity.
+
+
 KNOWN USABILITY ISSUES:
 	In the activities for sharing a selection of items, when you select the item, it gets highlighted. When the list view is scrolled and the selected item is OUT OF VIEW, the selection highlight is removed. BUT the item is still ACTUALLY selected - just not visually shown.
 
 
-RATIONALE:
-	Some classes are similar, such as the Main Activity and Archive Activity, List Adapters, and Share Activities. This is done in order to STYLE the activities differenly. I wanted the user to know where they were withouth having to read labels or indicators - namely, have a distinction between TODO Activity and ARCHIVE activity.
+
 
 
 REFERENCES:
