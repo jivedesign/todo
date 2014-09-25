@@ -28,6 +28,7 @@ import java.io.FileNotFoundException;
 
 import com.jivedesign.todo.R;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -51,7 +52,7 @@ import android.widget.TextView;
 import controller.Task;
 import controller.task_ListAdapter;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
 	final Context context = this;
 
