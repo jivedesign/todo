@@ -89,12 +89,16 @@ public class MainActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		
+		// sets up the list view on resume
 		setup_adapter();
 		
 	}
 	
 	
 	public void startup() {
+		
+		// sets up onclick and the listview
+		
 		todoListView = (ListView) findViewById(R.id.todo_listView);
 		final Button add_todoButton = (Button) findViewById(R.id.add_Button);
 

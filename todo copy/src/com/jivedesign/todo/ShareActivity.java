@@ -134,12 +134,18 @@ public class ShareActivity extends Activity {
 
 
 	public void toSendTodos(View v) {
+		
+		// takes user to ShareTodoActivity
+		
 		Intent i = new Intent(this, ShareTodoActivity.class);
 		i.putExtra("email", email_address);
 		startActivity(i);
 	}
 
 	public void toSendArchives(View v) {
+		
+		// takes user to SharearchiveActivity
+		
 		Intent i = new Intent(this, ShareArchiveActivity.class);
 		i.putExtra("email", email_address);
 		startActivity(i);

@@ -89,6 +89,8 @@ public class ArchiveActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 		
+		// sets up the listview onresume
+		
 		setup_adapter();
 		
 	}
