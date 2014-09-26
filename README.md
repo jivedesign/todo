@@ -63,7 +63,7 @@ REFERENCES:
 	http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
 	
 - Learning about emailing
-	http://www.tutorialspoint.com/about/about_disclaimer.htm
+	- http://www.tutorialspoint.com/about/about_disclaimer.htm
 	"You are granted permission to access the website and its contents only for the purpose of learning and/or business expansion."
 	
 	http://www.tutorialspoint.com/android/android_sending_email.htm
