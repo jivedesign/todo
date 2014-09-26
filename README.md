@@ -50,18 +50,23 @@ REFERENCES:
 	http://en.wikipedia.org/wiki/Singleton_pattern
 
 - RadioGroup/Radio Buttons : Android 
+ 	- Licensed under Creative Commons Attribution 2.5 Generic
 	http://developer.android.com/guide/topics/ui/controls/radiobutton.html
 
 - Learning a bit about Dialog Boxes : Android
+	- Licensed under Creative Commons Attribution 2.5 Generic
 	http://developer.android.com/reference/android/app/AlertDialog.Builder.html#setSingleChoiceItems(java.lang.CharSequence[],int, android.content.DialogInterface.OnClickListener)
 
 - Saving files : Android
+ 	- Licensed under Creative Commons Attribution 2.5 Generic
 	http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
 	
 - Learning about emailing
-	// http://www.tutorialspoint.com/android/android_sending_email.htm
-
 	http://www.tutorialspoint.com/about/about_disclaimer.htm
 	"You are granted permission to access the website and its contents only for the purpose of learning and/or business expansion."
+	
+	http://www.tutorialspoint.com/android/android_sending_email.htm
+
+	
 
 	
