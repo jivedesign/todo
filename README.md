@@ -47,6 +47,7 @@ KNOWN USABILITY ISSUES:
 REFERENCES:
 
 - Understanding Singletons
+	- Licensed under Creative Commons Attribution-ShareAlike 3.0 Unported License
 	http://en.wikipedia.org/wiki/Singleton_pattern
 
 - RadioGroup/Radio Buttons : Android 
